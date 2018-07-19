@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io('https://udemy-redis-express-socketio-akariozora.c9users.io:8081');
+            socket.on('greeting-from-server', function (message) {
+                document.body.appendChild(
+                    document.createTextNode(message.greeting)    
+                );
+                socket.emit('greeting-from-client', {
+                    greeting: 'Hello server'
+                });
+            });
+        </script>
+    </body>
+</html>
